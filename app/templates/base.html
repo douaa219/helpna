@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="{{ session.get('lang', 'en') }}">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Helpna</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<nav>
+
+    <!-- LOGO -->
+    <div class="logo">
+
+        <span class="logo-icon">
+            H
+        </span>
+
+        <span class="logo-text">
+            Helpna
+        </span>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+
+        <!-- LANGUAGE DROPDOWN -->
+        <div class="language-dropdown">
+
+            <button class="lang-btn">
+
+                {% if session.get('lang') == 'fr' %}
+                    🌐 FR Français
+
+                {% elif session.get('lang') == 'darija' %}
+                    🌐 MA الدارجة
+
+                {% else %}
+                    🌐 GB English
+                {% endif %}
+
+            </button>
+
+            <div class="lang-menu">
+
+                <a href="/set_language/darija">
+
+                    <span>MA</span>
+
+                    الدارجة
+
+                </a>
+
+                <a href="/set_language/fr">
+
+                    <span>FR</span>
+
+                    Français
+
+                </a>
+
+                <a href="/set_language/en">
+
+                    <span>GB</span>
+
+                    English
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- NAV LINKS -->
+        {% if session.get('lang') == 'en' %}
+
+            <a href="/">Home</a>
+
+            <a href="/login">
+                Sign in
+            </a>
+
+            <a href="/register" class="nav-btn">
+                Get started
+            </a>
+
+        {% elif session.get('lang') == 'darija' %}
+
+            <a href="/">
+                الرئيسية
+            </a>
+
+            <a href="/login">
+                دخول
+            </a>
+
+            <a href="/register" class="nav-btn">
+                ابدا دابا
+            </a>
+
+        {% else %}
+
+            <a href="/">
+                Accueil
+            </a>
+
+            <a href="/login">
+                Se connecter
+            </a>
+
+            <a href="/register" class="nav-btn">
+                Commencer
+            </a>
+
+        {% endif %}
+
+        <!-- LOGOUT -->
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="auth-page">
+    <div class="auth-card">
+        <h1>Rejoindre Helpna</h1>
+        <p>Créez un compte en quelques secondes.</p>
+
+        <form method="POST">
+            <div class="role-boxes">
+                <label class="role-box">
+                    <input type="radio" name="role" value="client" required>
+                    <span>👤</span>
+                    <strong>J'ai besoin d'aide</strong>
+                    <small>Embaucher des prestataires</small>
+                </label>
+
+                <label class="role-box">
+                    <input type="radio" name="role" value="worker" required>
+                    <span>💼</span>
+                    <strong>J'offre des services</strong>
+                    <small>Trouver du travail</small>
+                </label>
+            </div>
+
+            <label>Nom complet</label>
+            <input type="text" name="name" required>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Mot de passe</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Créer un compte</button>
+        </form>
+
+        <p class="auth-link">
+            Vous avez déjà un compte ? <a href="/login">Se connecter</a>
+        </p>
+    </div>
+</section>
+
+{% endblock %}

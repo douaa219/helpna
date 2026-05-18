@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="modern-dashboard">
+
+    <!-- TOP -->
+    <div class="dash-welcome">
+        <div>
+            <p class="small-text">Your location</p>
+            <h1>Welcome {{ user.name }} 👋</h1>
+        </div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    {% if notifications %}
+    <div class="notifications-box">
+        {% for notification in notifications %}
+            <p>🔔 {{ notification.message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- SEARCH -->
+    <form method="GET" class="modern-search">
+        <input type="text" name="search" placeholder="Search for a service...">
+        <input type="text" name="city" placeholder="City...">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- HERO -->
+    <div class="hero-banner">
+        <div>
+            <h2>Your solution, one tap away!</h2>
+            <p>Fast and reliable services near you.</p>
+            <a href="#tasks">Explore</a>
+        </div>
+
+        <div class="hero-icon">🛠️</div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="section-row">
+        <h2>Service Categories</h2>
+        <span>View all ›</span>
+    </div>
+
+    <div class="category-grid">
+        <div class="category-card">🧹 <p>Cleaning</p></div>
+        <div class="category-card">🎨 <p>Painting</p></div>
+        <div class="category-card">🔧 <p>Plumber</p></div>
+        <div class="category-card">⚡ <p>Electrician</p></div>
+    </div>
+
+    <!-- CREATE TASK -->
+    {% if user.role == "client" %}
+    <div class="dash-card">
+        <h2>Post a Task</h2>
+
+        <form method="POST" enctype="multipart/form-data" class="task-form">
+            <input type="text" name="title" placeholder="Task title" required>
+            <textarea name="description" placeholder="Describe your task"></textarea>
+            <input type="text" name="location" placeholder="Location">
+            <input type="number" name="price" placeholder="Price DH">
+            <input type="file" name="image">
+            <button type="submit">Publish Task</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <!-- TASKS -->
+    <div class="section-row" id="tasks">
+        <h2>
+            {% if user.role == "client" %}
+                Your Tasks
+            {% else %}
+                Available Services
+            {% endif %}
+        </h2>
+        <span>{{ tasks|length }} tasks</span>
+    </div>
+
+    <div class="modern-tasks">
+        {% for task in tasks %}
+        <div class="modern-task-card">
+
+            {% if task.image %}
+            <img src="{{ url_for('static', filename='images/' + task.image) }}" class="modern-task-image">
+            {% endif %}
+
+            <div class="task-top">
+                <h3>
+                    <a href="/task/{{ task.id }}">{{ task.title }}</a>
+                </h3>
+                <span class="task-status">{{ task.status }}</span>
+            </div>
+
+            <p class="task-description">{{ task.description }}</p>
+
+            <div class="task-info">
+                <span>📍 {{ task.location }}</span>
+                <span>💰 {{ task.price }} DH</span>
+            </div>
+
+            {% if task.worker %}
+            <p class="worker-info">
+                👷 <a href="/profile/{{ task.worker.id }}">{{ task.worker.name }}</a>
+            </p>
+            {% endif %}
+
+            {% if user.role == "worker" and task.status == "open" %}
+            <a href="/accept/{{ task.id }}" class="accept-btn">Accept Task</a>
+            {% endif %}
+
+            {% if user.role == "client" and task.user_id == user.id %}
+            <div class="task-actions">
+                <a href="/edit-task/{{ task.id }}" class="edit-btn">Edit</a>
+                <a href="/delete-task/{{ task.id }}" class="delete-btn">Delete</a>
+            </div>
+            {% endif %}
+
+            {% if user.role == "client" and task.status == "accepted" and not task.review %}
+            <form method="POST" action="/review/{{ task.id }}" class="review-form">
+                <select name="rating" required>
+                    <option value="">Rate worker</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="1">⭐</option>
+                </select>
+
+                <input type="text" name="comment" placeholder="Write a review">
+                <button type="submit">Submit Review</button>
+            </form>
+            {% endif %}
+
+            {% if task.review %}
+            <p class="review-text">
+                ⭐ {{ task.review.rating }}/5
+                {% if task.review.comment %}
+                    — {{ task.review.comment }}
+                {% endif %}
+            </p>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}

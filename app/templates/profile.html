@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="profile-page">
+
+    <div class="profile-card">
+
+        <div class="profile-top">
+
+            <div class="profile-avatar">
+                {{ profile_user.name[0] }}
+            </div>
+
+            <div>
+
+                <h1>
+                    {{ profile_user.name }}
+                </h1>
+
+                <p class="profile-role">
+                    {{ profile_user.role }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="profile-info">
+
+            <div class="info-box">
+
+                <h3>📍 City</h3>
+
+                <p>
+                    {{ profile_user.city or "Not added" }}
+                </p>
+
+            </div>
+
+            <div class="info-box">
+
+                <h3>📞 Phone</h3>
+
+                <p>
+                    {{ profile_user.phone or "Not added" }}
+                </p>
+
+            </div>
+
+            {% if profile_user.role == "worker" %}
+
+            <div class="info-box">
+
+                <h3>🛠 Category</h3>
+
+                <p>
+                    {{ profile_user.category or "Not added" }}
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="bio-box">
+
+            <h2>
+                About
+            </h2>
+
+            <p>
+                {{ profile_user.bio or "No bio yet." }}
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

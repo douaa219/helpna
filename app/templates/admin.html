@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <h1 class="section-title">
+        Admin Dashboard
+    </h1>
+
+    <!-- STATS -->
+    <div class="admin-stats">
+
+        <div class="stat-card">
+            <h2>{{ users|length }}</h2>
+            <p>Users</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>{{ tasks|length }}</h2>
+            <p>Tasks</p>
+        </div>
+
+    </div>
+
+    <!-- USERS -->
+    <div class="admin-box">
+
+        <h2>Users</h2>
+
+        {% for user in users %}
+            <div class="admin-item">
+                <p>{{ user.name }}</p>
+
+                <span>{{ user.role }}</span>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- TASKS -->
+    <div class="admin-box">
+
+        <h2>Tasks</h2>
+
+        {% for task in tasks %}
+            <div class="admin-item">
+
+                <p>{{ task.title }}</p>
+
+                <span>{{ task.status }}</span>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="auth-page">
+    <div class="auth-card">
+        <h1>Se connecter</h1>
+        <p>Bienvenue sur Helpna.</p>
+
+        <form method="POST">
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Mot de passe</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Se connecter</button>
+        </form>
+
+        <p class="auth-link">
+            Vous n'avez pas de compte ? <a href="/register">Créer un compte</a>
+        </p>
+    </div>
+</section>
+
+{% endblock %}

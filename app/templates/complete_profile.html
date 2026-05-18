@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="auth-page">
+    <div class="auth-card">
+        <h1>Complete your profile</h1>
+        <p>Add your information so people can trust you.</p>
+
+        <form method="POST">
+            <label>Phone number</label>
+            <input type="text" name="phone" required>
+
+            <label>City</label>
+            <select name="city" required>
+                <option value="">Choose your city</option>
+                <option value="Casablanca">Casablanca</option>
+                <option value="Rabat">Rabat</option>
+                <option value="Marrakech">Marrakech</option>
+                <option value="Fès">Fès</option>
+                <option value="Tanger">Tanger</option>
+                <option value="El Jadida">El Jadida</option>
+                <option value="Agadir">Agadir</option>
+            </select>
+
+            {% if user.role == "worker" %}
+            <label>Service category</label>
+            <select name="category" required>
+                <option value="">Choose category</option>
+                <option value="Handyman">Handyman</option>
+                <option value="Plumber">Plumber</option>
+                <option value="Painter">Painter</option>
+                <option value="Locksmith">Locksmith</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Cleaning">Cleaning</option>
+            </select>
+            {% endif %}
+
+            <label>Bio</label>
+            <textarea name="bio" placeholder="Tell us about yourself"></textarea>
+
+            <button type="submit">Save Profile</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

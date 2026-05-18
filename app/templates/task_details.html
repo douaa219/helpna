@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="task-details-card">
+
+        <div class="task-top">
+            <h1>{{ task.title }}</h1>
+
+            <span class="task-status">
+                {{ task.status }}
+            </span>
+        </div>
+
+        <p class="task-description">
+            {{ task.description }}
+        </p>
+
+        <div class="task-info">
+            <span>📍 {{ task.location }}</span>
+
+            <span>
+                💰 {{ task.price }} DH
+            </span>
+        </div>
+
+        {% if task.worker %}
+        <div class="worker-box">
+            <h3>Worker</h3>
+
+            <a href="/profile/{{ task.worker.id }}">
+                {{ task.worker.name }}
+            </a>
+        </div>
+        {% endif %}
+
+        {% if task.review %}
+        <div class="review-box">
+            <h3>Review</h3>
+
+            <p>
+                ⭐ {{ task.review.rating }}/5
+            </p>
+
+            <p>
+                {{ task.review.comment }}
+            </p>
+        </div>
+        {% endif %}
+
+    </div>
+
+<div class="chat-box">
+
+    <h2>Chat</h2>
+
+    <div class="messages">
+
+        {% for message in messages %}
+
+        <div class="message-item">
+
+            <strong>
+                {{ message.sender.name }}
+            </strong>
+
+            <p>
+                {{ message.text }}
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <form
+        method="POST"
+        action="/send-message/{{ task.id }}"
+        class="chat-form"
+    >
+
+        <input
+            type="text"
+            name="text"
+            placeholder="Write a message..."
+            required
+        >
+
+        <button type="submit">
+            Send
+        </button>
+
+    </form>
+
+</div>
+</section>
+
+{% endblock %}
