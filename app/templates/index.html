@@ -2,55 +2,43 @@
 
 {% block content %}
 
-<section class="home-hero">
-    {% if session.get('lang') == 'en' %}
-    <h1>Find & Offer Services</h1>
-{% elif session.get('lang') == 'darija' %}
-    <h1>Qelleb w 9ddem Services</h1>
-{% else %}
-    <h1>Trouvez et proposez des services</h1>
-{% endif %}
-    <p>Connect with trusted local workers for daily services.</p>
+<section class="home-modern">
 
-    <div class="home-buttons">
-        <a href="/dashboard" class="btn-primary">Post a Task</a>
-        <a href="/register" class="btn-secondary">Become a Tasker</a>
+    <div class="home-text">
+        <span class="home-badge">Trusted local services</span>
+
+        <h1>Find trusted help near you.</h1>
+
+        <p>
+            Helpna connects clients with skilled local workers for cleaning,
+            repairs, painting, electricity, plumbing and more.
+        </p>
+
+        <div class="home-actions">
+            <a href="/register" class="home-btn-primary">Get started</a>
+            <a href="/login" class="home-btn-secondary">Sign in</a>
+        </div>
     </div>
+
+    <div class="home-card">
+        <h3>Popular services</h3>
+
+        <div class="mini-service">🧹 Cleaning</div>
+        <div class="mini-service">🔧 Plumbing</div>
+        <div class="mini-service">⚡ Electricity</div>
+        <div class="mini-service">🎨 Painting</div>
+    </div>
+
 </section>
 
-<section class="services">
-    <h2>Daily Services</h2>
+<section class="home-services">
+    <h2>Services you can find</h2>
 
-    <div class="service-cards">
-        <div class="service-card">
-            <h3>Handyman</h3>
-            <p>Repairs, fixing, small home jobs.</p>
-        </div>
-
-        <div class="service-card">
-            <h3>Plumber</h3>
-            <p>Water leaks, pipes, bathroom fixes.</p>
-        </div>
-
-        <div class="service-card">
-            <h3>Painter</h3>
-            <p>Wall painting and home decoration.</p>
-        </div>
-
-        <div class="service-card">
-            <h3>Locksmith</h3>
-            <p>Door locks, keys, and emergency lock services.</p>
-        </div>
-
-        <div class="service-card">
-            <h3>Electrician</h3>
-            <p>Electrical repairs, lights, sockets, and wiring.</p>
-        </div>
-
-        <div class="service-card">
-            <h3>Cleaning</h3>
-            <p>Home cleaning, deep cleaning, and office cleaning.</p>
-        </div>
+    <div class="home-service-grid">
+        <div class="home-service-card">🧹<h3>Cleaning</h3><p>Home and office cleaning.</p></div>
+        <div class="home-service-card">🔧<h3>Plumber</h3><p>Leaks, pipes and bathrooms.</p></div>
+        <div class="home-service-card">⚡<h3>Electrician</h3><p>Lights, wiring and sockets.</p></div>
+        <div class="home-service-card">🎨<h3>Painter</h3><p>Walls and decoration.</p></div>
     </div>
 </section>
 
