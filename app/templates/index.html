@@ -31,38 +31,6 @@
 
 </section>
 
-<section class="home-services">
-
-    <h2>Services you can find</h2>
-
-    <div class="home-service-grid">
-        <div class="home-service-card">
-            🧹
-            <h3>Cleaning</h3>
-            <p>Home and office cleaning.</p>
-        </div>
-
-        <div class="home-service-card">
-            🔧
-            <h3>Plumber</h3>
-            <p>Leaks, pipes and bathrooms.</p>
-        </div>
-
-        <div class="home-service-card">
-            ⚡
-            <h3>Electrician</h3>
-            <p>Lights, wiring and sockets.</p>
-        </div>
-
-        <div class="home-service-card">
-            🎨
-            <h3>Painter</h3>
-            <p>Walls and decoration.</p>
-        </div>
-    </div>
-
-</section>
-
 <section class="popular-projects">
 
     <h2>Popular Projects</h2>
@@ -70,70 +38,63 @@
     <div class="project-grid">
 
         <div class="project-card">
-            <img src="{{ url_for('static', filename='images/furniture.jpg') }}">
-            <h3>Furniture Assembly</h3>
-            <p>Projects starting at $49</p>
+            <img src="{{ url_for('static', filename='images/cleaning.jpg') }}">
+            <h3>Cleaning</h3>
         </div>
 
         <div class="project-card">
-            <img src="{{ url_for('static', filename='images/shelves.jpg') }}">
-            <h3>Mount Art or Shelves</h3>
-            <p>Projects starting at $65</p>
+            <img src="{{ url_for('static', filename='images/plumber.png') }}">
+            <h3>Plumber</h3>
         </div>
 
         <div class="project-card">
-            <img src="{{ url_for('static', filename='images/tv.jpg') }}">
-            <h3>Mount a TV</h3>
-            <p>Projects starting at $69</p>
+            <img src="{{ url_for('static', filename='images/painting.png') }}">
+            <h3>Painting</h3>
         </div>
 
         <div class="project-card">
             <img src="{{ url_for('static', filename='images/moving.jpg') }}">
-            <h3>Help Moving</h3>
-            <p>Projects starting at $67</p>
+            <h3>Moving</h3>
         </div>
 
     </div>
 
 </section>
+
 <footer class="footer">
 
-    <div class="footer-container">
+    <div class="footer-social">
+        <h3>Follow us!</h3>
 
-        <div class="footer-column">
-            <h3>Helpna</h3>
-            <p>Find trusted local workers for daily services.</p>
-
-            <div class="footer-socials">
-                <span>📘</span>
-                <span>📸</span>
-                <span>🎵</span>
-                <span>💼</span>
-            </div>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">LinkedIn</a>
         </div>
+    </div>
+
+    <div class="footer-grid">
 
         <div class="footer-column">
             <h4>Discover</h4>
-            <a href="#">Cleaning</a>
-            <a href="#">Electrician</a>
-            <a href="#">Plumbing</a>
-            <a href="#">Painting</a>
-            <a href="#">Nearby Services</a>
+            <a href="#">Become a Tasker</a>
+            <a href="#">Services Nearby</a>
+            <a href="#">All Services</a>
+            <a href="#">Help</a>
         </div>
 
         <div class="footer-column">
             <h4>Company</h4>
             <a href="#">About Us</a>
             <a href="#">Careers</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
+            <a href="#">Blog</a>
+            <a href="#">Legal</a>
         </div>
 
         <div class="footer-column">
             <h4>Download our app</h4>
-
-            <p>Book services anytime with Helpna.</p>
+            <p>Find trusted workers anywhere with Helpna.</p>
 
             <img src="{{ url_for('static', filename='images/appstore.png') }}" class="store-btn">
 
